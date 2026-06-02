@@ -4,9 +4,9 @@
   "version": "1.0",
   "description": "A simple To-Do List extension built with PyScript.",
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "interface.html"
   },
   "content_security_policy": {
-    "extension_pages": "script-src 'self' 'unsafe-eval' https://pyscript.net; object-src 'self';"
+    "extension_pages": "script-src 'self'; object-src 'self';"
   }
 }
