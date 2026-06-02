@@ -1,12 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "Python To-Do List",
+  "name": "Autumn Pixel Styled To-Do List",
   "version": "1.0",
-  "description": "A simple To-Do List extension built with PyScript.",
+  "description": "An autumn-pixel styled To-Do List extension built with PyScript.",
   "action": {
-    "default_popup": "interface.html"
+    "default_popup": "popup.html"
   },
   "content_security_policy": {
-    "extension_pages": "script-src 'self'; object-src 'self';"
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
   }
 }
