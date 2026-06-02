@@ -3,53 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>To-Do List</title>
-    <!-- Load PyScript Core Assets -->
-    <link rel="stylesheet" href="https://pyscript.net">
-    <script type="module" src="https://pyscript.net"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pyscript.css" />
+    <script type="module" src="pyscript.js"></script>
+    
     <style>
         body {
-            width: 300px;
-            height: 400px;
-            font-family: sans-serif;
-            padding: 10px;
+            width: 320px;
+            min-height: 420px;
+            background-color: #f4ebe1; /* Warm Cream background */
+            font-family: "Courier New", Courier, monospace; /* Clean Pixelated Look */
+            font-weight: bold;
+            padding: 15px;
             margin: 0;
+            color: #5c3a21; /* Deep Acorn Brown */
         }
 
         h3 {
-            font-family: "Pixelify Sans", sans-serif;
-            font-weight: 700;
             text-align: center;
-            top:0;
-            color:rgba(40, 30, 30, 0.929);
+            color: #d36135; /* Burnt Orange */
+            margin-top: 0;
+            font-size: 22px;
+            text-shadow: 2px 2px 0px #bd532b;
+            letter-spacing: 1px;
+            border-bottom: 4px double #d36135;
+            padding-bottom: 5px;
         }
 
         .input-row {
             display: flex;
-            gap: 8px;
-            margin-bottom: 15px;;
+            gap: 6px;
+            margin-bottom: 15px;
         }
 
-        input { 
+        input[type="text"] { 
             flex: 1; 
             padding: 8px; 
-            border: 1px solid #ccc; 
-            border-radius: 4px; 
+            background-color: #fffdfa;
+            border: 3px solid #5c3a21; /* Thick pixel border */
+            color: #5c3a21;
+            font-family: inherit;
+            font-weight: bold;
+            outline: none;
         }
         
+        /* Pixel-art style flat buttons */
         button { 
-            padding: 8px 12px; 
-            background: #007bff; 
+            padding: 6px 12px; 
+            background: #e0895d; 
             color: white; 
-            border: none; 
-            border-radius: 4px; 
+            border: 3px solid #5c3a21;
+            font-family: inherit;
+            font-weight: bold;
             cursor: pointer; 
+            box-shadow: 2px 2px 0px #5c3a21;
         }
         
-        button:hover { 
-            background: #0056b3; 
+        button:active { 
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px #5c3a21;
+        }
+
+        #add-btn {
+            background-color: #87a96b; /* Sage Green Leaf */
         }
 
         ul { 
@@ -60,32 +75,69 @@
 
         li { 
             display: flex; 
-            justify-content: space-between; 
             align-items: center; 
             padding: 8px; 
-            border-bottom: 1px solid #eee; 
+            background: #ebdccb; /* Soft Autumn Wood tone */
+            border: 3px solid #5c3a21;
+            margin-bottom: 6px;
+            box-shadow: 2px 2px 0px #5c3a21;
         }
 
-        .delete-btn { 
-            background: #dc3545; 
-            padding: 4px 8px; 
-            font-size: 12px; 
+        .todo-checkbox {
+            width: 18px;
+            height: 18px;
+            accent-color: #87a96b;
+            cursor: pointer;
+            margin-right: 8px;
         }
-        
-        .delete-btn:hover { 
-            background: #bd2130; 
+
+        .task-text {
+            flex: 1;
+            word-break: break-all;
+            padding-right: 4px;
+        }
+
+        /* Strikethrough style for completed task */
+        li.completed .task-text {
+            text-decoration: line-through;
+            color: #a08068;
+            opacity: 0.7;
+        }
+
+        .actions {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+        }
+
+        /* Priority Button Styles */
+        .priority-btn {
+            padding: 2px 6px;
+            font-size: 11px;
+            box-shadow: 1px 1px 0px #5c3a21;
+        }
+        .p-0 { background-color: #dfba73; color: #5c3a21; } /* Low = Pumpkin Yellow */
+        .p-1 { background-color: #e0895d; color: white; }    /* High = Orange */
+        .p-2 { background-color: #cd4a4a; color: white; }    /* Highest = Crimson */
+
+        .delete-btn { 
+            background: #a64b2a; 
+            padding: 2px 6px; 
+            font-size: 11px; 
+            box-shadow: 1px 1px 0px #5c3a21;
         }
     </style>
 </head>
 
 <body>
-    <h3>To-Do List</h3>
+    <h3> TO-DO LIST </h3>
     <div class="input-row">
-        <input id="task" input="text" placeholder="What do you want to do today?">
-        <button id="add" py-click="Add task">Add</button>
+        <input id="task-input" type="text" placeholder="What do you want to do today?">
+        <button id="add-btn" py-click="add_task">Add</button>
     </div> 
-    <ul id="task-list">
-        <script type="py" src="app.py" config='{"interpreter": "https://jsdelivr.net"}'></script>
-    </ul>
+    
+    <ul id="task-list"></ul>
+
+    <script type="py" src="app.py"></script>
 </body>
 </html>
