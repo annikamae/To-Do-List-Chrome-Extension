@@ -1,140 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>To-Do List</title>
-    <link rel="stylesheet" href="pyscript.css" />
-    <script type="module" src="pyscript.js"></script>
-    
-    <style>
-        body {
-            width: 320px;
-            min-height: 420px;
-            background-color: #f4ebe1; 
-            font-family: "Courier New", Courier, monospace; 
-            font-weight: bold;
-            padding: 15px;
-            margin: 0;
-            color: #5c3a21; 
-        }
-
-        h3 {
-            text-align: center;
-            color: #d36135; 
-            margin-top: 0;
-            font-size: 22px;
-            text-shadow: 2px 2px 0px #bd532b;
-            letter-spacing: 1px;
-            border-bottom: 4px double #d36135;
-            padding-bottom: 5px;
-        }
-
-        .input-row {
-            display: flex;
-            gap: 6px;
-            margin-bottom: 15px;
-        }
-
-        input[type="text"] { 
-            flex: 1; 
-            padding: 8px; 
-            background-color: #fffdfa;
-            border: 3px solid #5c3a21; 
-            color: #5c3a21;
-            font-family: inherit;
-            font-weight: bold;
-            outline: none;
-        }
-        
-        button { 
-            padding: 6px 12px; 
-            background: #e0895d; 
-            color: white; 
-            border: 3px solid #5c3a21;
-            font-family: inherit;
-            font-weight: bold;
-            cursor: pointer; 
-            box-shadow: 2px 2px 0px #5c3a21;
-        }
-        
-        button:active { 
-            transform: translate(2px, 2px);
-            box-shadow: 0px 0px 0px #5c3a21;
-        }
-
-        #add-btn {
-            background-color: #87a96b; 
-        }
-
-        ul { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0; 
-        }
-
-        li { 
-            display: flex; 
-            align-items: center; 
-            padding: 8px; 
-            background: #ebdccb; 
-            border: 3px solid #5c3a21;
-            margin-bottom: 6px;
-            box-shadow: 2px 2px 0px #5c3a21;
-        }
-
-        .todo-checkbox {
-            width: 18px;
-            height: 18px;
-            accent-color: #87a96b;
-            cursor: pointer;
-            margin-right: 8px;
-        }
-
-        .task-text {
-            flex: 1;
-            word-break: break-all;
-            padding-right: 4px;
-        }
-
-        li.completed .task-text {
-            text-decoration: line-through;
-            color: #a08068;
-            opacity: 0.7;
-        }
-
-        .actions {
-            display: flex;
-            gap: 4px;
-            align-items: center;
-        }
-
-        .priority-btn {
-            padding: 2px 6px;
-            font-size: 11px;
-            box-shadow: 1px 1px 0px #5c3a21;
-        }
-        .p-0 { background-color: #dfba73; color: #5c3a21; } 
-        .p-1 { background-color: #e0895d; color: white; }    
-        .p-2 { background-color: #cd4a4a; color: white; }   
-
-        .delete-btn { 
-            background: #a64b2a; 
-            padding: 2px 6px; 
-            font-size: 11px; 
-            box-shadow: 1px 1px 0px #5c3a21;
-        }
-    </style>
-</head>
-
-<body>
-    <h3> TO-DO LIST </h3>
-    <div class="input-row">
-        <input id="task-input" type="text" placeholder="What do you want to do today?">
-        <button id="add-btn" py-click="add_task">Add</button>
-    </div> 
-    
-    <ul id="task-list"></ul>
-
-    <script type="py" src="app.py"></script>
-</body>
+<html lang="en"> 
+    <head>  
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>To-Do List</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class = "notes">
+                <input id="notes-input" type="text" placeholder="Notes:">
+            </div>
+            <div class="todo-app">
+                <h2>To-Do List</h2>
+                <div class="row">
+                    <input id="inputing" type="text" placeholder="What do you want to do today?">
+                    <button id = "clickme"> + </button>
+                </div>
+                <ul id="list-container">
+                    <!--<li class="checked">Task 1</li>
+                    <li>Task 2</li>
+                    <li>Task 3</li>-->
+                </ul>
+            </div>
+        </div>
+        <script src="/popup.js" ></script>    
+    </body>
 </html>
+
+<style>
+    body {
+        width: 360px;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        box-sizing:border-box;
+        background: #fff;
+        margin: 0;
+    }
+
+    .container {
+        background: linear-gradient(135deg, pink, white) ;
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+        border-radius:0px;
+    }
+
+    .notes {
+        width: 80%;
+        height: 60px;
+        border-radius: 10px;
+        border: 2px solid pink;
+        background-color: white;
+        margin-left: 10px;
+        margin-bottom: 15px;
+        padding: 10px;  
+        order: -1;      
+    }
+
+    .notes input {
+        color: palevioletred;
+    }
+
+    .todo-app {
+        width: 70%;
+        max-width: 100%;
+        background: white;
+        margin: 0 auto;
+        padding: 30px 30px 20px;
+        border-radius: 10px;
+        margin-left: 10px
+    }
+
+    .todo-app h2 {
+        color: palevioletred;
+        align-items:center;
+        margin-bottom: 10px;
+        margin-top: -10px;
+    }
+
+    .row {
+        display:flex;
+        align-items:center;
+        justify-content: space-between;
+        border-radius:30px;
+        padding-left:20px;
+        background:lightpink;
+        margin-bottom: 10px;
+    }
+
+    #list-container {
+        padding: 0;
+        margin: 10px 0 0 0; 
+        list-style: none;
+    }
+
+    input {
+        flex:1;
+        border:none;
+        outline:none;
+        background:transparent;
+        font-weight:14px;
+        padding:5px;
+    }
+
+    .row button {
+        background-color: white;
+        width: 25px;
+        height:25px;
+        border-radius:20px;
+        border: solid 2px pink;
+        color: palevioletred;
+    }
+
+    ul li {
+        list-style: none;
+        font-size: 16px;
+        padding: 10px 0;
+        user-select: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center; 
+        gap: 15px; 
+        color: palevioletred;
+        transition: all 0.6s ease-in-out;
+        width: 100%;
+    }
+
+    ul li::before {
+        content: '';
+        display: inline-block;
+        height: 24px;
+        width: 24px;
+        flex-shrink: 0; 
+        border-radius: 50%;
+        border: 2px solid palevioletred;
+        box-sizing: border-box;
+    }
+
+    ul li.checked::before {
+        background: palevioletred;
+    }
+
+    ul li.checked {
+        text-decoration:line-through;
+        opacity: 0;
+        transform: translateX(10px);
+    }
+
+    ul li span {
+        color: deeppink;
+        width:20px;
+        height: 20px;
+        font-size: 20px;
+        text-align: center;
+        border-radius:50px;
+        top: 5px;
+        line-height: 20px;
+        margin-left: auto;
+    }
+
+    ul li span:hover{
+        background-color: rgb(255, 184, 194, 0.5);
+        transition:ease-in-out 0.2s;
+    }
+
+</style>
