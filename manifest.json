@@ -1,0 +1,10 @@
+{
+  "manifest_version": 3,
+  "name": "Minimal To-Do List",
+  "version": "1.0",
+  "description": "A simple to-do list inside your browser.",
+  "permissions": ["storage"],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
